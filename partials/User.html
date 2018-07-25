@@ -1,0 +1,102 @@
+
+<style>
+body {
+	font: 14px sans-serif;
+}
+
+.axis path, .axis line {
+	fill: none;
+	stroke: black;
+	shape-rendering: crispEdges;
+}
+
+.axis path {
+	fill: none;
+	stroke: none;
+}
+
+.bar {
+	fill: steelblue;
+}
+</style>
+
+<div class="container">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="panel panel-info">
+			<div class="panel-heading">Search User</div>
+			<div class="panel-body">
+				<div class="box">
+					<div class="box-body">
+						<div class="row form-group">
+							<form name="searchUserForm" class="form-horizontal formClass">
+								<div class="col-md-4 col-sm-4 col-xs-6 control-label">
+									<label>Search User Key</label> <span class="errorMessages">&nbsp;*</span>
+								</div>
+								<div class="col-md-4 col-sm-4 col-xs-6">
+									<input type="text" class="form-control" name="searchString"
+										placeholder="Search" data-ng-model="search" required>
+									<span class="errorMessages"
+										data-ng-show="searchUserForm.searchString.$touched && !searchUserForm.searchString.$pristine && searchUserForm.searchString.$error.required">Search
+										string is required</span>
+
+								</div>
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<button type="button" class="btn btn-info"
+										data-ng-click="searchUsers(searchUserForm)">Search</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<hr>
+					<div class="box-body">
+						<div class="col-md-12 col-sm-12 col-xs-12 userHeading"
+							ng-if="userList">Users List</div>
+						<div class="row userProfile">
+							<div class="col-md-12 col-sm-12 col-xs-12" ng-if="userList"
+								style="text-align: center;">
+								<lable>Total Numbers Of Users : </lable>
+								{{totalNumberOfUsers}}
+							</div>
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="col-md-4 col-sm-6 col-xs-6"
+									data-ng-repeat="user in userList | limitTo : 10"
+									style="margin-top: 4px;" data-ng-click=userProfile(user.login)>
+									<div class="box box-solid userbox"
+										style="border: 1px solid #a8a4e6;">
+										<div class="box-header with-border"
+											style="text-align: center; border-bottom: none;">
+											<h3 class="box-title">{{user.login}}</h3>
+										</div>
+										<div class="box-body"
+											style="padding-top: 0; text-align: center;">
+											<div>Score : {{user.score}}</div>
+											<div>Type : {{user.type}}</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div ng-if="showChart" class="col-md-12 col-sm-12 col-xs-12">
+								<div class="box">
+									<div class="box-body barChart" style="font-size: 11px;">
+										<hr>
+										<div class="col-md-12 col-sm-12 col-xs-12 userHeading"
+											ng-if="userList">Dashboard</div>
+										<div class="col-md-2 col-sm-2 col-xs-2"></div>
+										<div class="col-md-8 col-sm-8 col-xs-8">
+											<bar-chart height="options.height" data="data"
+												hovered="hovered(args)"></bar-chart>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

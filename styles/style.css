@@ -1,0 +1,31 @@
+.userProfile {
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.barChart {
+	font-size: 11px!importrant;
+}
+
+.userHeading {
+	font-size: 22px
+}
+
+.box {
+	/* background-color: #e6f2ff; */
+	
+}
+
+.formClass {
+	margin-top: 12px;
+}
+
+hr {
+	border-top: 1px solid rgb(236, 236, 236);
+	/* border-bottom: 2px solid #fff; */
+}
+
+.panel-body {
+	/*  background-color: #90afbb; */
+	
+}

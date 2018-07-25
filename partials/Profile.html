@@ -1,0 +1,158 @@
+
+<style>
+.profileContainer {
+	font-family: -webkit-body;
+	font-size: initial;
+	color: gray;
+}
+
+.headerText {
+	font-family: -webkit-body;
+	font-size: initial;
+	color: black;
+}
+
+.marginLeft {
+	margin-left: 10px;
+}
+
+.iconColor {
+	color: #11A5A7;
+}
+
+hr {
+	border-top: 1px solid rgb(236, 236, 236);
+	/* border-bottom: 2px solid #fff; */
+}
+</style>
+
+
+<div class="container">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="panel panel-info">
+			<div class="panel-heading">User Profile</div>
+			<div class="panel-body">
+
+
+				<section class="content">
+					<div class="box">
+						<div class="row form-group">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+
+								<div class="col-md-4 col-sm-4 col-xs-4"
+									style="width: 250px; height: 250px; margin-top: 15px">
+									<img class=""
+										style="width: 225px; height: 225px; margin-left: 12px; margin-top: 10px"
+										alt="ProfilePicture" src="{{imagePath}}">
+								</div>
+								<div class="col-md-6 col-sm-6 col-xs-6" style="margin-top: 6%;">
+									<div class="row form-group">
+										<form name="profile" class="form-horizontal">
+											<div class="col-md-12 col-sm-12 col-xs-12">
+												<div class="col-md-6 col-sm-6 col-xs-6 control-label">
+													<label>Name</label>
+												</div>
+												<div class="col-md-6 col-sm-6 col-xs-6"
+													style="line-height: 2.6;">{{profileData.name}}</div>
+											</div>
+											<div class="col-md-12 col-sm-12 col-xs-12">
+												<div class="col-md-6 col-sm-6 col-xs-6 control-label">
+													<label>Followers</label>
+												</div>
+												<div class="col-md-6 col-sm-6 col-xs-6"
+													style="line-height: 2.6;">{{profileData.followers}}</div>
+											</div>
+											<div class="col-md-12 col-sm-12 col-xs-12">
+												<div class="col-md-6 col-sm-6 col-xs-6 control-label">
+													<label>Following</label>
+												</div>
+												<div class="col-md-6 col-sm-6 col-xs-6"
+													style="line-height: 2.6;">{{profileData.following}}</div>
+											</div>
+											<div class="col-md-12 col-sm-12 col-xs-12">
+												<div class="col-md-6 col-sm-6 col-xs-6 control-label">
+													<label>Location</label>
+												</div>
+												<div class="col-md-6 col-sm-6 col-xs-6"
+													style="line-height: 2.6;">{{profileData.location}}</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box-body" class="col-md-12 col-sm-12 col-xs-12">
+							<hr>
+							<div class="col-md-6 col-sm-6 col-xs-6">
+								<button type="button" name="Followers" class="btn btn-info"
+									data-ng-click="showFollowersRepos()" style="width: 100%"
+									ng-disabled="followerFlag">Followers</button>
+							</div>
+							<div class="col-md-6 col-sm-6 col-xs-6">
+								<button type="button" name="Repositories" class="btn btn-info"
+									data-ng-click="showFollowersRepos()" style="width: 100%"
+									ng-disabled="!followerFlag">Repositories</button>
+							</div>
+						</div>
+						<div class="box-body" data-ng-show="followerFlag">
+							<div class="row" style="margin-top: 10px;">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="col-md-4 col-sm-6 col-xs-6"
+										data-ng-repeat="user in followers" style="margin-top: 4px;">
+										<div class="box box-solid userbox"
+											style="border: 1px solid #a8a4e6;">
+											<div class="col-md-12 col-sm-12 col-xs-12"
+												style="width: 250px; height: 250px; margin-top: 15px">
+												<img class=""
+													style="width: 225px; height: 225px; margin-left: 12px; margin-top: 10px"
+													alt="ProfilePicture" src="{{user.avatar_url}}">
+											</div>
+											<div
+												class="box-header with-border col-md-12 col-sm-12 col-xs-12"
+												style="text-align: center; border-bottom: none;">
+												<h3 class=" box-title">{{user.login}}</h3>
+											</div>
+											<div class="box-body"
+												style="padding-top: 0; text-align: center;">
+												<div class="col-md-12 col-sm-12 col-xs-12">Type :
+													{{user.type}}</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="box-body" data-ng-hide="followerFlag">
+							<div class="row" style="margin-top: 10px;">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="col-md-4 col-sm-6 col-xs-6"
+										data-ng-repeat="repo in repos" style="margin-top: 4px;">
+										<div class="box box-solid userbox"
+											style="border: 1px solid #a8a4e6;">
+											<div class="box-header with-border"
+												style="text-align: center; border-bottom: none;">
+												<h3 class="repo-title">{{repo.name}}</h3>
+											</div>
+											<div class="repo-body"
+												style="padding-top: 0; text-align: center;">
+												<div>language : {{repo.language}}</div>
+												<div>branch : {{repo.default_branch}}</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+
+
+
+			</div>
+		</div>
+	</div>
+</div>
